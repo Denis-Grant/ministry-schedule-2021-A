@@ -1,0 +1,23 @@
+{
+  "name": "ministry-schedule-mar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scrap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Denis-Grant/ministry-schedule-mar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Denis-Grant/ministry-schedule-mar/issues"
+  },
+  "homepage": "https://github.com/Denis-Grant/ministry-schedule-mar#readme",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
