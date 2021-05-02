@@ -16,6 +16,8 @@ const linkArr = [6,11,16,21];
 let timeStr;
 const weekTime = '11am / 6.30pm';
 const weekEnd = '2pm';
+
+let n = [];
 // Media Query
 let mq = window.matchMedia('(min-width: 920px)');
 
@@ -44,10 +46,69 @@ getDates().then(result =>{
         return e.gs$cell.row == '3' && e.gs$cell.col > 1
     })
     let weekLen = datesObj.length
+    if (weekLen === 4){
+        n = [18,19,
+            21,22,23,24,
+            28,29,30,31,
+            34,35,36,37,
+            40,
+            42,43,
+            45,46,47,48,
+            51,52,53,54,
+            57,58,59,60,
+            63,
+            65,66,
+            68,69,70,71,
+            74,75,76,77,
+            80,81,82,83,
+            86,
+            88,89,
+            91,92,93,94,
+            97,98,99,100,
+            103,104,105,106,
+            109,
+            111,112,
+            114,115,116,117,
+            120,121,122,123,
+            126,127,128,129,
+            132
+        ]
+    } else {
+        n = [19,20,
+            22,23,24,25,
+            29,30,31,32,
+            35,36,37,38,
+            41,
+            43,44,
+            46,47,48,49,
+            52,53,54,55,
+            58,59,60,61,
+            64,
+            66,67,
+            69,70,71,72,
+            75,76,77,78,
+            81,82,83,84,
+            87,
+            89,90,
+            92,93,94,95,
+            98,99,100,101,
+            104,105,106,107,
+            110,
+            112,113,
+            115,116,117,118,
+            121,122,123,124,
+            127,128,129,130,
+            133
+        ]
+    }
+    console.log('Len=' + weekLen)
     let dates = []
     datesObj.forEach((e)=>{
         dates.push(e.content.$t)
     })
+
+        // console.log(result.feed.entry)
+
 // const dates = [
 //     '05/04','12/04','19/04','26/04'
 // ];
@@ -56,150 +117,159 @@ getDates().then(result =>{
 //     {topic: 'Bible Studies'},
 //     {title: 'Campaign Experiences'}
 // ];
-let weekResults = result.feed.entry.filter((e)=>{
-    return e.gs$cell.row  == '5'
+// let weekResults = result.feed.entry.filter((e)=>{
+//     return e.content.$t.includes('WK 1')
+// })
+// console.log(weekResults)
+weekArr.forEach((e, index)=>{
+    let weekResults = result.feed.entry.filter((d)=>{
+        return d.content.$t.includes(`WK${index + 1}`)
+    })
+
 })
-console.log(weekResults)
+
+let resultArr = result.feed.entry;
+console.log(resultArr[127].content.$t)
 const data = {
         
         wk1: [
-            {week: '05/04'},
-            {topic: 'Enjoy Life Forever!'},
+            {week: resultArr[n[0]].content.$t},
+            {topic: resultArr[n[1]].content.$t},
 
             {day: 'Monday'},
-            {theme: 'Help Your Student Set Goals'},
-            {ref: "- w21 June p.3 para 4"},
-            {overseers: 'A Osafo / D Grant'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=10'} ,
+            {theme: resultArr[n[2]].content.$t},
+            {ref: resultArr[n[3]].content.$t},
+            {overseers: resultArr[n[4]].content.$t},
+            {link: resultArr[n[5]].content.$t},
 
             {day: 'Wednesday'},
-            {theme: 'Help Your Student To Make Lifestyle Changes.'},
-            {ref: '- w21 June p. 3-4 para 5-7'},
-            {overseers: 'S Baccas / H Neal'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=11'},
+            {theme: resultArr[n[6]].content.$t},
+            {ref: resultArr[n[7]].content.$t},
+            {overseers: resultArr[n[8]].content.$t},
+            {link: resultArr[n[9]].content.$t},
 
             {day: 'Friday'},
-            {theme: 'Help Your Student Come To Love Jehovah'},
-            {ref: '- w21 June p. 4 para 8'},
-            {overseers: 'P Wu / D Griffiths'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=43'},
+            {theme: resultArr[n[10]].content.$t},
+            {ref: resultArr[n[11]].content.$t},
+            {overseers: resultArr[n[12]].content.$t},
+            {link: resultArr[n[13]].content.$t},
 
             {day: 'Saturday'},
             {theme: ''},
             {ref: ''},
-            {overseers: 'D Moore'},
+            {overseers: resultArr[n[14]].content.$t},
             {link: ''}
         ],
         wk2:  [
-            {week: '12/04'},
-            {topic: 'The End of The World!'},
+            {week: resultArr[n[15]].content.$t},
+            {topic: resultArr[n[16]].content.$t},
 
             {day: 'Monday'},
-            {theme: 'Will The Earth Be Burned Up?'},
-            {ref: '- w13 1/1 p.5 para 4-8'},
-            {overseers: 'D Grant / T Boland (Jnr)'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2013003#h=6'},
- 
+            {theme: resultArr[n[17]].content.$t},
+            {ref: resultArr[n[18]].content.$t},
+            {overseers: resultArr[n[19]].content.$t},
+            {link: resultArr[n[20]].content.$t},
+
             {day: 'Wednesday'},
-            {theme: 'What Happens At The End Of The World?'},
-            {ref: '- w13 1/1 p.5 para 9-13'},
-            {overseers: 'S Baccas / P Wu'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2013003#h=12'},
-  
+            {theme: resultArr[n[21]].content.$t},
+            {ref: resultArr[n[22]].content.$t},
+            {overseers: resultArr[n[23]].content.$t},
+            {link: resultArr[n[24]].content.$t},
+
             {day: 'Friday'},
-            {theme: "Is The End Of The World Really Near?"},
-            {ref: '- w13 1/1 p.5 para 14-17'},
-            {overseers: 'R Santiago / C Yalley'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2013003#h=23'},
-      
+            {theme: resultArr[n[25]].content.$t},
+            {ref: resultArr[n[26]].content.$t},
+            {overseers: resultArr[n[27]].content.$t},
+            {link: resultArr[n[28]].content.$t},
+
             {day: 'Saturday'},
             {theme: ''},
             {ref: ''},
-            {overseers: 'D Grant'},
+            {overseers: resultArr[n[29]].content.$t},
             {link: ''}
         ],
         wk3: [
-            {week: '19/04'},
-            {topic: 'Enjoy Life Forever! Pt 2'},
+            {week: resultArr[n[30]].content.$t},
+            {topic: resultArr[n[31]].content.$t},
 
             {day: 'Monday'},
-            {theme: 'Develop A Friendship With Your Student.'},
-            {ref: '- w21 June p. 5-6 para 10,11'},
-            {overseers: 'A Osafo / D Moore'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=45'} ,
+            {theme: resultArr[n[32]].content.$t},
+            {ref: resultArr[n[33]].content.$t},
+            {overseers: resultArr[n[34]].content.$t},
+            {link: resultArr[n[35]].content.$t},
 
             {day: 'Wednesday'},
-            {theme: 'Help Your Student to Widen Out'},
-            {ref: '- w21 June p. 6  para 12-14'},
-            {overseers: 'S Baccas / H Neal'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=47'},
+            {theme: resultArr[n[36]].content.$t},
+            {ref: resultArr[n[37]].content.$t},
+            {overseers: resultArr[n[38]].content.$t},
+            {link: resultArr[n[39]].content.$t},
 
             {day: 'Friday'},
-            {theme: 'Train Your Student To Share His Faith'},
-            {ref: "- w21 June p. 6-7  para 16"},
-            {overseers: 'P Wu / W Davies'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2021440#h=51'},
+            {theme: resultArr[n[40]].content.$t},
+            {ref: resultArr[n[41]].content.$t},
+            {overseers: resultArr[n[42]].content.$t},
+            {link: resultArr[n[43]].content.$t},
 
             {day: 'Saturday'},
             {theme: ''},
             {ref: ''},
-            {overseers: 'Chris Burgess - Bethel Speaker'},
+            {overseers: resultArr[n[44]].content.$t},
             {link: ''}
         ],
         wk4:  [
-            {week: '26/04'},
-            {topic: 'Bible Questions Answered'},
+            {week: resultArr[n[45]].content.$t},
+            {topic: resultArr[n[46]].content.$t},
 
             {day: 'Monday'},
-            {theme: 'Will God Help Me if I Pray?'},
-            {ref: "- ijwbq article 26"},
-            {overseers: 'D Grant / D Griffiths'},
-            {link: 'https://www.jw.org/en/bible-teachings/questions/will-god-help-me-if-i-pray/'},
- 
+            {theme: resultArr[n[47]].content.$t},
+            {ref: resultArr[n[48]].content.$t},
+            {overseers: resultArr[n[49]].content.$t},
+            {link: resultArr[n[50]].content.$t},
+
             {day: 'Wednesday'},
-            {theme: 'Is Our Time to Die Predetermined?'},
-            {ref: "- ijwbq article 80"},
-            {overseers: 'S Baccas / H Neal'},
-            {link: 'https://www.jw.org/en/bible-teachings/questions/time-to-die/'},
-  
+            {theme: resultArr[n[51]].content.$t},
+            {ref: resultArr[n[52]].content.$t},
+            {overseers: resultArr[n[53]].content.$t},
+            {link: resultArr[n[54]].content.$t},
+
             {day: 'Friday'},
-            {theme: 'Who Go to Heaven?'},
-            {ref: "- ijwbq article 116"},
-            {overseers: 'C Yalley / T Boland Jr'},
-            {link: 'https://www.jw.org/en/bible-teachings/questions/go-to-heaven/'},
-      
+            {theme: resultArr[n[55]].content.$t},
+            {ref: resultArr[n[56]].content.$t},
+            {overseers: resultArr[n[57]].content.$t},
+            {link: resultArr[n[58]].content.$t},
+
             {day: 'Saturday'},
             {theme: ''},
             {ref: ''},
-            {overseers: 'P Wu'},
+            {overseers: resultArr[n[59]].content.$t},
             {link: ''}
         ],
         wk5:  [
-            {week: '25/01'},
-            {topic: 'The Bible'},
+            {week: resultArr[n[60]].content.$t},
+            {topic: resultArr[n[61]].content.$t},
 
             {day: 'Monday'},
-            {theme: 'Bible Teachings​—Timeless Wisdom!'},
-            {ref: '- wp18 No. 1 pp. 4-7'},
-            {overseers: 'W Davies / D Grant'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2018019'},
- 
+            {theme: resultArr[n[62]].content.$t},
+            {ref: resultArr[n[63]].content.$t},
+            {overseers: resultArr[n[64]].content.$t},
+            {link: resultArr[n[65]].content.$t},
+
             {day: 'Wednesday'},
-            {theme: 'Outdated or Ahead of Its Time?'},
-            {ref: '- wp18 No. 1 pp. 6-7'},
-            {overseers: 'S Baccas H Neal'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2018029'},
-  
+            {theme: resultArr[n[66]].content.$t},
+            {ref: resultArr[n[67]].content.$t},
+            {overseers: resultArr[n[68]].content.$t},
+            {link: resultArr[n[69]].content.$t},
+
             {day: 'Friday'},
-            {theme: 'The Bible and Your Future!'},
-            {ref: '- wp18 No. 1 pp. 14-15'},
-            {overseers: 'W Davies / D Moore'},
-            {link: 'https://wol.jw.org/en/wol/d/r1/lp-e/2018023'},
-      
+            {theme: resultArr[n[70]].content.$t},
+            {ref: resultArr[n[71]].content.$t},
+            {overseers: resultArr[n[72]].content.$t},
+            {link: resultArr[n[73]].content.$t},
+
             {day: 'Saturday'},
             {theme: ''},
             {ref: ''},
-            {overseers: 'R Santiago'},
+            {overseers: resultArr[n[74]].content.$t},
             {link: ''}
         ]
 
